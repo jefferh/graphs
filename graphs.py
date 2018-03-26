@@ -67,7 +67,8 @@ def bellman_ford(wdg, source):
     wdg = weighted digraph
     source = source vertex from which the shortest paths to all other vertices are desired
     """
-
+    start = time.time()
+    
     distance = {}
     predecessor = {}
 
@@ -88,6 +89,8 @@ def bellman_ford(wdg, source):
     for edge in wdg.E:
         if distance[edge[0]] + wdg.weight[edge] < distance[edge[1]]:
             raise Exception("The digraph contains a cycle with negative weight! :(")
+
+    print "Bellman-Ford took {} seconds.".format(time.time() - start)
 
     return (distance, predecessor)
         
